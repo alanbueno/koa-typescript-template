@@ -1,0 +1,37 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "plugins": ["@typescript-eslint", "prettier", "standard", "jest"],
+  "extends": [
+    "standard",
+    "prettier",
+    "prettier/standard",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "globals": {},
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": false
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "jest/no-focused-tests": "error",
+    "import/default": 2,
+    "import/no-named-default": "off",
+    "prettier/prettier": "error",
+    "standard/no-callback-literal": "warn",
+    "no-unexpected-multiline": "warn",
+    "no-return-await": "warn",
+    "node/no-deprecated-api": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  }
+}
