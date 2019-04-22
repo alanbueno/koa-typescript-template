@@ -9,11 +9,11 @@ koa-template is a basic Restful API template build on top of koa.js v2 framework
 Download the dependencies, create your SentryProject on [https://sentry.io/](https://sentry.io/), and run, just like that!
 
 Clone the repo:
-`https://github.com/alanbueno/koa-template-typescript`
+`https://github.com/alanbueno/koa-typescript-template`
 
 Run `npm install` or `yarn install`
 
-[Set your .env variables](https://github.com/alanbueno/koa-template-typescript#env-variables)
+[Set your .env variables](https://github.com/alanbueno/koa-typescript-template#env-variables)
 
 Run `npm start` or `yarn run start`
 
