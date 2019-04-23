@@ -22,7 +22,7 @@ Run `npm start` or `yarn run start`
 Set the env variables (optional\*\*)
 
 ```shell
-SENTRY_URL=someTokenYouAlreadyCreatedOnSentryPage@sentry.io/someNumber
+SENTRY_DNS_KEY=someTokenYouAlreadyCreatedOnSentryPage@sentry.io/someNumber
 ```
 
 ## Usage
