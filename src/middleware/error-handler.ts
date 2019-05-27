@@ -1,4 +1,4 @@
-import Boom from 'boom'
+import Boom from '@hapi/boom'
 import { ParameterizedContext } from 'koa'
 
 export default async (ctx: ParameterizedContext, next: Function): Promise<any> => {

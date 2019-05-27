@@ -1,4 +1,4 @@
-import someResource from './someResource.controller'
+import someResource from './someResource.action'
 
 describe('Low level test for someResource', () => {
   it('Should set the ctx body', async () => {

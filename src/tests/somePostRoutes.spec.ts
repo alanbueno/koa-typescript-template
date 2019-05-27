@@ -7,9 +7,9 @@ const {
   application: { basePath },
 } = config
 
-describe('POST - /somePost', () => {
+describe('POST - /login', () => {
   it('Should return successfully', async () => {
-    const response = await request.post(`${basePath}/somePost`)
+    const response = await request.post(`${basePath}/login`)
     expect(response.status).toEqual(200)
     expect(response.type).toEqual('application/json')
     expect(response.body).toEqual({

@@ -1,6 +1,6 @@
 import Router from 'koa-router'
 import packageJson from '../package.json'
-import { someResource } from './resources'
+import { auth, machines, merchant, product, purchase, users } from './resources'
 
 const router = new Router()
 
@@ -30,5 +30,10 @@ export default app => {
   })
 
   app.use(router.routes(), router.allowedMethods())
-  app.use(someResource.routes(), someResource.allowedMethods())
+  app.use(auth.routes())
+  app.use(machines.routes(), machines.allowedMethods())
+  app.use(merchant.routes(), merchant.allowedMethods())
+  app.use(product.routes(), product.allowedMethods())
+  app.use(purchase.routes(), purchase.allowedMethods())
+  app.use(users.routes(), users.allowedMethods())
 }

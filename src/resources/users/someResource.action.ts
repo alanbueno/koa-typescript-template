@@ -1,5 +1,5 @@
 import { Resource } from '..'
-import Boom from 'boom'
+import Boom from '@hapi/boom'
 
 const someResourceHandler: Resource<void> = async ctx => {
   try {

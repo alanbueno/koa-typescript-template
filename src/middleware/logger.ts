@@ -2,7 +2,7 @@ import config from 'config'
 import * as Sentry from '@sentry/node'
 import koaLogger from 'koa-logger'
 import signale, { Signale } from 'signale'
-import Boom from 'boom'
+import Boom from '@hapi/boom'
 import packageJson from '../../package.json'
 
 const errorsMap = new Map([[400, 'error'], [401, 'error'], [404, 'info'], [500, 'fatal']])
