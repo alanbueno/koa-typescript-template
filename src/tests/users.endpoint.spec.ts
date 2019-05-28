@@ -7,9 +7,9 @@ const {
   application: { basePath },
 } = config
 
-describe('POST - /login', () => {
+describe('GET - /users', () => {
   it('Should return successfully', async () => {
-    const response = await request.post(`${basePath}/login`)
+    const response = await request.get(`${basePath}/users`)
     expect(response.status).toEqual(200)
     expect(response.type).toEqual('application/json')
     expect(response.body).toEqual({

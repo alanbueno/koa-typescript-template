@@ -24,10 +24,11 @@
   "author": "Alan Bueno",
   "license": "ISC",
   "engines": {
-    "node": "8.11.2",
-    "npm": "6.1.0"
+    "node": "10.15.13",
+    "npm": "6.9.0"
   },
   "dependencies": {
+    "@admin/utils": "file:./src/utils",
     "@hapi/boom": "^7.4.2",
     "@hapi/joi": "^15.0.3",
     "@sentry/node": "^5.1.0",

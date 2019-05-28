@@ -1,14 +1,13 @@
-import { Resource } from '..'
+import { RouteHandler } from '..'
 import Boom from '@hapi/boom'
+import usersCommand from './users.command'
+import usersValidation from './users.validation'
 
-const someResourceHandler: Resource<void> = async ctx => {
+const usersHandler: RouteHandler<void> = async ctx => {
   try {
-    ctx.body = {
-      first: 'Test',
-      second: 'Another test',
-      number: 1,
-      flag: true,
-    }
+    usersValidation(ctx)
+
+    await usersCommand(ctx)
   } catch (e) {
     // in case of non actionable problems, usually caused by dependencies
     // breadcrumbs might be handy to find the root cause of the errors
@@ -22,9 +21,9 @@ const someResourceHandler: Resource<void> = async ctx => {
     // })
 
     throw Boom.boomify(e, {
-      message: 'SomeResourceFailed',
+      message: 'UsersHandlerFailed',
     })
   }
 }
 
-export default someResourceHandler
+export default usersHandler

@@ -55,7 +55,7 @@ typings/
 .yarn-integrity
 
 # VsCode
-.vscode/launch.json
+#.vscode/launch.json
 
 # Dist
 /dist
