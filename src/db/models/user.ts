@@ -18,11 +18,9 @@ import { Team } from './team'
 type UserAttributes = {
   id?: number
   active: boolean
-  avatar?: string
   email?: string
   firstName: string
   lastName?: string
-  notification?: boolean
   phone?: string
   pwd: string
   mainRoleId: string
@@ -32,6 +30,8 @@ type UserInstance = {
   readonly id: string
   active: boolean
   firstName: string
+  lastName: string
+  phone: string
   email: string
   pwd: string
 
@@ -45,6 +45,7 @@ type UserInstance = {
 
 type UserAssociations = {
   User: typeof User
+  Team: typeof Team
   Role: typeof Role
 }
 
@@ -52,6 +53,8 @@ export class User extends Model<UserInstance, UserAttributes> {
   public id!: number // Note that the `null assertion` `!` is required in strict mode.
   public active!: string
   public firstName!: string
+  public lastName!: string
+  public phone: string | null
   public email!: string | null // for nullable fields
   public pwd!: string
 
@@ -94,9 +97,10 @@ export class User extends Model<UserInstance, UserAttributes> {
     thisUserTeam: Association<User, Team>
   }
 
-  public associate({ Role, User }: UserAssociations): void {
+  public associate({ Role, Team, User }: UserAssociations): void {
     // Here we associate which actually populates out pre-declared `association` static and other methods.
     User.belongsTo(Role, { as: 'mainRoleAssociation', foreignKey: 'mainRoleId' })
+    User.belongsTo(Team, { as: 'mainTeamAssociation', foreignKey: 'mainTeamId' })
   }
 }
 
@@ -104,7 +108,7 @@ export default (sequelize: Sequelize): typeof User => {
   User.init(
     {
       id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER, // UNSIGNED Warning: PostgresSQL does not support 'INTEGER' with LENGTH, UNSIGNED or ZEROFILL. Plain 'INTEGER' will be used instead.
         autoIncrement: true,
         primaryKey: true,
       },
@@ -119,9 +123,19 @@ export default (sequelize: Sequelize): typeof User => {
           is: /^[a-z]+$/i, // regex for just letters
         },
       },
-      mainRoleId: {
-        type: DataTypes.INTEGER.UNSIGNED,
+      lastName: {
+        type: new DataTypes.STRING(64),
         allowNull: false,
+        validate: {
+          is: /^[a-z]+$/i, // regex for just letters
+        },
+      },
+      phone: {
+        type: new DataTypes.STRING(64),
+        allowNull: false,
+        validate: {
+          not: ['[a-z]', 'i'], // will not allow letters
+        },
       },
       email: {
         type: new DataTypes.STRING(128),
@@ -132,6 +146,14 @@ export default (sequelize: Sequelize): typeof User => {
       },
       pwd: {
         type: new DataTypes.STRING(128),
+        allowNull: false,
+      },
+      mainRoleId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      mainTeamId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },

@@ -71,6 +71,11 @@ export class Team extends Model<TeamInstance, TeamAttributes> {
 export default (sequelize: Sequelize): typeof Team => {
   Team.init(
     {
+      id: {
+        type: DataTypes.INTEGER, // UNSIGNED Warning: PostgresSQL does not support 'INTEGER' with LENGTH, UNSIGNED or ZEROFILL. Plain 'INTEGER' will be used instead.
+        autoIncrement: true,
+        primaryKey: true,
+      },
       active: DataTypes.BOOLEAN,
       name: new DataTypes.STRING(64),
       description: new DataTypes.STRING(128),

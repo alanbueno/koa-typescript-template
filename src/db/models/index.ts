@@ -10,36 +10,26 @@ import { Team } from './team'
 
 export interface IDbConnection {
   sequelize: Sequelize
-  User: User
-  Role: Role
-  Team: Team
+  User: typeof User
+  Role: typeof Role
+  Team: typeof Team
 }
+
+let db: any = {}
 
 const { db: dbConfig } = config
 // defining db connection
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig)
 
-// defining db obj
-let db: IDbConnection = {
-  sequelize,
-  User: null,
-  Role: null,
-  Team: null,
-}
-
-// connecting to db
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.')
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err)
-  })
-
 // sync if needed
 sequelize
   .sync(/* { logging: dbConfig.logging || false, // false=no Logs or value=function that log sql queries } */)
+  // .sync({
+  //   logging: msg => {
+  //     console.log('helooo')
+  //     console.log(msg)
+  //   },
+  // })
   .then(() => {
     console.log('Db has been synced successfully.')
   })
@@ -49,8 +39,10 @@ sequelize
 
 // importing models
 const indexModel = basename(module.filename)
+const validExtensions = ['.js', '.ts']
 const modelFiles = readdirSync(__dirname).filter(
-  file => file.indexOf('.') !== 0 && file !== indexModel && file.slice(-3) === '.js'
+  file => file !== indexModel && file.indexOf('.') !== 0 && validExtensions.includes(file.slice(-3))
+  // file => file !== indexModel && file.match(/\.[js|ts]+$/i)[0]
 )
 
 modelFiles.forEach(file => {
@@ -60,9 +52,20 @@ modelFiles.forEach(file => {
 })
 
 for (const modelName in db) {
-  if (db[modelName].associate) db[modelName].associate(db)
+  if ('associate' in db[modelName]) {
+    db[modelName].associate(db)
+  }
 }
 
 db.sequelize = sequelize
 
-export default db
+export const checkDbConnection = async () => {
+  try {
+    await sequelize.authenticate()
+    console.log('DB blz =======================================================')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export default db as IDbConnection

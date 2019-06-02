@@ -48,8 +48,8 @@ export class UserRole extends Model<UserRoleInstance, UserRoleAttributes> {
 export default (sequelize: Sequelize): typeof UserRole => {
   UserRole.init(
     {
-      userId: DataTypes.INTEGER.UNSIGNED,
-      roleId: DataTypes.INTEGER.UNSIGNED,
+      userId: DataTypes.INTEGER, // .UNSIGNED Warning: PostgresSQL does not support 'INTEGER' with LENGTH, UNSIGNED or ZEROFILL. Plain 'INTEGER' will be used instead.
+      roleId: DataTypes.INTEGER, // .UNSIGNED
       status: DataTypes.BOOLEAN,
     },
     {

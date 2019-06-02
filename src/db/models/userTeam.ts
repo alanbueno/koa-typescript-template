@@ -48,8 +48,8 @@ export class UserTeam extends Model<UserTeamInstance, UserTeamAttributes> {
 export default (sequelize: Sequelize): typeof UserTeam => {
   UserTeam.init(
     {
-      userId: DataTypes.INTEGER.UNSIGNED,
-      teamId: DataTypes.INTEGER.UNSIGNED,
+      userId: DataTypes.INTEGER, // .UNSIGNED Warning: PostgresSQL does not support 'INTEGER' with LENGTH, UNSIGNED or ZEROFILL. Plain 'INTEGER' will be used instead.
+      teamId: DataTypes.INTEGER, // .UNSIGNED
       status: DataTypes.BOOLEAN,
     },
     {

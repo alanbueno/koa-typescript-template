@@ -1,4 +1,5 @@
-import config from 'config'
+// eslint-disable-next-line
+const config = require('config')
 const { username, password, database, host, dialect } = config.db
 
 const dbConfig = {
@@ -9,7 +10,7 @@ const dbConfig = {
   dialect,
 }
 
-export default {
+module.exports = {
   // the different configs according to the environment
   // are being set by the 'config' package
   development: dbConfig,

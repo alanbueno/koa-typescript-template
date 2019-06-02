@@ -1,7 +1,11 @@
-// import usersDao from './users.dao'
+import usersDao from './users.dao'
+// const usersDao = { getUsers: () => [] }
 
-export default ctx => {
+export default async ctx => {
+  const users = await usersDao.getUsers()
+
   ctx.body = {
+    users: users,
     first: 'Test',
     second: 'Another test',
     number: 1,

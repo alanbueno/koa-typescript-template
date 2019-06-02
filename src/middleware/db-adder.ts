@@ -1,4 +1,4 @@
-import db from '../db/models'
+// import db from '../db/models'
 import Boom from '@hapi/boom'
 import { ParameterizedContext } from 'koa'
 
@@ -8,7 +8,7 @@ export interface ICustomContext {
 
 export default async (ctx: ParameterizedContext<ICustomContext>, next: Function): Promise<any> => {
   try {
-    ctx.state.db = db
+    // ctx.state.db = db
 
     await next()
   } catch (e) {

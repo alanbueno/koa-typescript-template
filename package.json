@@ -1,15 +1,21 @@
 {
-  "name": "vending-api",
+  "name": "koa-typescript-api",
   "version": "0.0.1",
-  "description": "Api serving the data needed in the vending machines administration system",
+  "description": "A simple/clean Koa template with basic resources to start your koa api on top of typescript",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:ts",
+    "build": "npm run clean:dist && npm run build:ts",
     "build:ts": "tsc",
-    "start": "npm run build:ts && node dist/index.js",
-    "test": "jest",
+    "clean:dist": "rm -rf ./dist",
+    "db:local:start": "./bin/tearDownTestDB.sh && docker run --name postgres-db-test-container -p 5432:5432 -e POSTGRES_DB=postgres_test -e POSTGRES_PASSWORD=pass -d postgres",
+    "db:migrate": "npx sequelize-cli db:migrate:latest",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate",
+    "db:status": "npx sequelize-cli db:migrate:status",
     "lint": "eslint '**/*.ts'",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "start": "npm run build:ts && node dist/index.js",
+    "test": "./bin/prepareDbForTest.sh jest",
+    "watch:ts": "tsc -w"
   },
   "keywords": [
     "api",

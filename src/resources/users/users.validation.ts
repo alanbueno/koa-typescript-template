@@ -5,6 +5,7 @@ export default createValidation(
   // schema
   {
     someParameter: Joi.string(),
+    body: Joi.object(),
   },
   // picking up just the attributes that we want
   ({ params: { someParameter }, body }) => ({
