@@ -18,30 +18,28 @@ export interface IDbConnection {
 let db: any = {}
 
 const { db: dbConfig } = config
+
 // defining db connection
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbConfig)
 
-// sync if needed
-sequelize
-  .sync(/* { logging: dbConfig.logging || false, // false=no Logs or value=function that log sql queries } */)
-  // .sync({
-  //   logging: msg => {
-  //     console.log('helooo')
-  //     console.log(msg)
-  //   },
-  // })
-  .then(() => {
-    console.log('Db has been synced successfully.')
-  })
-  .catch(err => {
-    console.error('Unable to sync the database:', err)
-  })
+if (process.env['NODE_ENV'] === 'development') {
+  /* sync({ logging: dbConfig.logging || false, // false=no Logs or value=function that log sql queries }) */
+  sequelize
+    .sync()
+    .then(() => {
+      console.log('Db has been synced successfully.')
+    })
+    .catch(err => {
+      console.error('Unable to sync the database:', err)
+    })
+}
 
 // importing models
 const indexModel = basename(module.filename)
 const validExtensions = ['.js', '.ts']
 const modelFiles = readdirSync(__dirname).filter(
   file => file !== indexModel && file.indexOf('.') !== 0 && validExtensions.includes(file.slice(-3))
+  // if you want to go fancy and use regex instead
   // file => file !== indexModel && file.match(/\.[js|ts]+$/i)[0]
 )
 

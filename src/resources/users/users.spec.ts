@@ -1,7 +1,8 @@
 import usersAction from './users.action'
+import db from '../../db/models'
 
 describe('Low level test for someResource', () => {
-  it('Should   set the ctx body ', async () => {
+  it('Should set the ctx body ', async () => {
     let ctx = {
       params: { someParameter: 'testParam' },
       body: {},
@@ -15,4 +16,9 @@ describe('Low level test for someResource', () => {
       flag: true,
     })
   })
+})
+
+afterAll(done => {
+  db.sequelize.close()
+  done()
 })
