@@ -60,9 +60,17 @@ db.sequelize = sequelize
 export const checkDbConnection = async () => {
   try {
     await sequelize.authenticate()
-    console.log('DB blz =======================================================')
+    console.log('DB Ok')
   } catch (error) {
-    console.log(error)
+    console.error(error)
+  }
+}
+
+export const syncDb = async () => {
+  try {
+    await sequelize.sync()
+  } catch (error) {
+    console.error(error)
   }
 }
 
