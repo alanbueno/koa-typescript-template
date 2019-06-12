@@ -1,5 +1,9 @@
 import usersAction from './users.action'
-import db from '../../db/models'
+import db, { syncDb } from '../../db/models'
+
+beforeEach(async () => {
+  await syncDb()
+})
 
 describe('Low level test for someResource', () => {
   it('Should set the ctx body ', async () => {

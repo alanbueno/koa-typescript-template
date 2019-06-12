@@ -29,10 +29,13 @@ else
   DB_CONTAINER_ID=$(find_old_db_container_id)
 fi
 
-echo "Stopping DB container ${DB_CONTAINER_ID}..."
-docker stop ${DB_CONTAINER_ID}
-echo "DB container stopped. Going to remove it..."
-docker rm ${DB_CONTAINER_ID}
+if [ ! -z ${DB_CONTAINER_ID} ]
+then
+  echo "Stopping DB container ${DB_CONTAINER_ID}..."
+  docker stop ${DB_CONTAINER_ID}
+  echo "DB container stopped. Going to remove it..."
+  docker rm ${DB_CONTAINER_ID}
+fi
 
 echo "Test DB down!"
 exit 0
