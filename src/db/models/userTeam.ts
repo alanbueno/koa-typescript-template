@@ -3,13 +3,13 @@ import { Sequelize, Model, DataTypes } from 'sequelize'
 import { User } from './user'
 import { Team } from './team'
 
-type UserTeamAttributes = {
+interface UserTeamAttributes {
   teamId: number
   userId: number
   status: boolean
 }
 
-type UserTeamInstance = {
+interface UserTeamInstance {
   teamId: number
   userId: number
   status: boolean
@@ -19,7 +19,7 @@ type UserTeamInstance = {
   updatedAt: Date
 }
 
-type TeamUserAssociations = {
+interface TeamUserAssociations {
   Team: typeof Team
   User: typeof User
 }

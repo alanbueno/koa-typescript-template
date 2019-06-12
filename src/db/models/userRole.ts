@@ -3,13 +3,13 @@ import { Sequelize, Model, DataTypes } from 'sequelize'
 import { User } from './user'
 import { Role } from './role'
 
-type UserRoleAttributes = {
+interface UserRoleAttributes {
   roleId: number
   userId: number
   status: boolean
 }
 
-type UserRoleInstance = {
+interface UserRoleInstance {
   roleId: number
   userId: number
   status: boolean
@@ -19,7 +19,7 @@ type UserRoleInstance = {
   updatedAt: Date
 }
 
-type RoleUserAssociations = {
+interface RoleUserAssociations {
   Role: typeof Role
   User: typeof User
 }

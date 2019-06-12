@@ -15,7 +15,7 @@ import {
 import { Role } from './role'
 import { Team } from './team'
 
-type UserAttributes = {
+interface UserAttributes {
   id?: number
   active: boolean
   email?: string
@@ -26,7 +26,7 @@ type UserAttributes = {
   mainRoleId: string
 }
 
-type UserInstance = {
+interface UserInstance {
   readonly id: string
   active: boolean
   firstName: string
@@ -43,7 +43,7 @@ type UserInstance = {
   updatedAt: Date
 }
 
-type UserAssociations = {
+interface UserAssociations {
   User: typeof User
   Team: typeof Team
   Role: typeof Role

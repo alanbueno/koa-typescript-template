@@ -14,14 +14,14 @@ import {
 
 import { User } from './user'
 
-type RoleAttributes = {
+interface RoleAttributes {
   id?: number
   active: boolean
   name: string
   description?: string
 }
 
-type RoleInstance = {
+interface RoleInstance {
   readonly id: string
   active: boolean
   name: string
@@ -32,7 +32,7 @@ type RoleInstance = {
   updatedAt: Date
 }
 
-type RoleAssociation = {
+interface RoleAssociation {
   Role: typeof Role
   User: typeof User
 }

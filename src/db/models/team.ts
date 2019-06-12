@@ -14,14 +14,14 @@ import {
 
 import { User } from './user'
 
-type TeamAttributes = {
+interface TeamAttributes {
   id?: number
   active: boolean
   name: string
   description?: string
 }
 
-type TeamInstance = {
+interface TeamInstance {
   readonly id: string
   active: boolean
   name: string
@@ -32,7 +32,7 @@ type TeamInstance = {
   updatedAt: Date
 }
 
-type TeamAssociation = {
+interface TeamAssociation {
   Team: typeof Team
   User: typeof User
 }

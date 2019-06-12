@@ -1,10 +1,10 @@
-interface IShapeCurrencyParams {
+interface ShapeCurrencyParams {
   amount: number
   toFixed?: number
   prefix?: string
 }
 
-export type ShapeCurrency = (params: IShapeCurrencyParams) => string
+export type ShapeCurrency = (params: ShapeCurrencyParams) => string
 
 const shapeCurrency: ShapeCurrency = ({ amount = 0, toFixed = 0, prefix = '' }) => {
   var sign = Math.sign(amount) === -1 ? '-' : ''

@@ -3,7 +3,7 @@ import { IConfig } from '../node_modules/@types/config'
 import defaultConfig from './default'
 import { Dialect } from 'sequelize'
 
-export interface IAppConfig extends IConfig {
+export interface AppConfig extends IConfig {
   application: {
     host: string
     port: number
@@ -30,5 +30,5 @@ for (const key in defaultConfig) {
   appConfig[key] = nodeConfig.get(key)
 }
 
-export const config: IAppConfig = { ...appConfig, ...nodeConfig }
+export const config: AppConfig = { ...appConfig, ...nodeConfig }
 export default config

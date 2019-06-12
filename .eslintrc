@@ -32,6 +32,8 @@
     "no-return-await": "warn",
     "node/no-deprecated-api": "error",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-use-before-define": "off"
   }
 }

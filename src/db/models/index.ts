@@ -8,7 +8,7 @@ import { User } from './user'
 import { Role } from './role'
 import { Team } from './team'
 
-export interface IDbConnection {
+export interface DbConnection {
   sequelize: Sequelize
   User: typeof User
   Role: typeof Role
@@ -74,4 +74,4 @@ export const syncDb = async () => {
   }
 }
 
-export default db as IDbConnection
+export default db as DbConnection

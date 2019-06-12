@@ -2,11 +2,11 @@
 import Boom from '@hapi/boom'
 import { ParameterizedContext } from 'koa'
 
-export interface ICustomContext {
+export interface CustomContext {
   db: any
 }
 
-export default async (ctx: ParameterizedContext<ICustomContext>, next: Function): Promise<any> => {
+export default async (ctx: ParameterizedContext<CustomContext>, next: Function): Promise<any> => {
   try {
     // ctx.state.db = db
 
