@@ -28,7 +28,7 @@
     "npm": "6.1.0"
   },
   "dependencies": {
-    "@sentry/node": "^5.11.0",
+    "@sentry/node": "^5.12.3",
     "boom": "^7.3.0",
     "config": "^3.2.5",
     "joi": "^14.3.1",
