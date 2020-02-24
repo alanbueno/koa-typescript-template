@@ -34,7 +34,7 @@
     "joi": "^14.3.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
-    "koa-logger": "^2.0.1",
+    "koa-logger": "^3.2.1",
     "koa-router": "^8.0.8",
     "signale": "^1.4.0"
   },
