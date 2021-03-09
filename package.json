@@ -30,7 +30,7 @@
   "dependencies": {
     "@sentry/node": "^5.27.4",
     "boom": "^7.3.0",
-    "config": "^3.3.2",
+    "config": "^3.3.6",
     "joi": "^17.3.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
